@@ -198,6 +198,19 @@
             animation: gradientShift 3s ease infinite, pulseGlow 2s infinite;
         }
 
+        /* --- NEW: Share Button Style --- */
+        .share-btn {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            width: calc(100% - 40px); margin: 0 20px 15px; 
+            padding: 14px; 
+            background: #25d366; /* WhatsApp Green */
+            color: white; text-align: center; border-radius: 18px; text-decoration: none;
+            font-size: 16px; font-weight: 700; border: none; cursor: pointer;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+            transition: 0.3s;
+        }
+        .share-btn:hover { background: #1ebe57; transform: translateY(-2px); }
+
         .contact-btn i { animation: ringPhone 2.5s infinite; }
         .contact-btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 25px rgba(217, 119, 6, 0.6); background-position: 100% 50%; }
         .contact-btn:active { transform: translateY(1px) scale(0.98); }
@@ -448,6 +461,10 @@
         </div>
     </div>
 
+    <button class="share-btn" onclick="shareSite()">
+        <i class="fas fa-share-alt"></i> বন্ধুদের সাথে শেয়ার করুন
+    </button>
+
     <a href="https://jakariya41jr.github.io/my-profile/" target="_blank" class="contact-btn">
         <i class="fas fa-phone-alt"></i> যোগাযোগ করুন
     </a>
@@ -480,7 +497,6 @@
 <audio id="alarmAudio" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" preload="auto"></audio>
 
 <script>
-// ... (আপনার আগের সব জাভাস্ক্রিপ্ট লজিক এখানে থাকবে, কোনো পরিবর্তন নেই)
 let updateInterval;
 let tomorrowSehri = null; 
 let alarmEnabled = false;
@@ -493,6 +509,44 @@ const fallbackHadiths = [
     { text: "রোজা এবং কোরআন কিয়ামতের দিন বান্দার জন্য সুপারিশ করবে।", ref: "আহমাদ" },
     { text: "রমজান মাসে ওমরাহ করা আমার সাথে হজ করার সমতুল্য।", ref: "বুখারী" }
 ];
+
+// --- NEW FEATURE: Auto Detect City ---
+async function detectCity() {
+    try {
+        const response = await fetch('https://ipapi.co/json/');
+        const data = await response.json();
+        const citySelect = document.getElementById('citySelect');
+        const userCity = data.city;
+        
+        for (let option of citySelect.options) {
+            if (option.value.toLowerCase() === userCity.toLowerCase()) {
+                citySelect.value = option.value;
+                break;
+            }
+        }
+    } catch (error) {
+        console.log("Location detection failed.");
+    } finally {
+        getPrayerTimes();
+    }
+}
+
+// --- NEW FEATURE: Social Share ---
+function shareSite() {
+    const shareData = {
+        title: 'রমজান সময়সূচি ২০২৬',
+        text: 'আসসালামু আলাইকুম, ২০২৬ সালের পবিত্র রমজান মাসের সেহরি ও ইফতারের সঠিক সময়সূচি জানতে এই লিঙ্কে ক্লিক করুন। তৈরি করেছেন মো: জাকারিয়া হাসান।',
+        url: window.location.href
+    };
+
+    if (navigator.share) {
+        navigator.share(shareData).catch((err) => console.log('Error sharing', err));
+    } else {
+        // Fallback for browsers that don't support Web Share API
+        const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareData.text + " " + shareData.url)}`;
+        window.open(waUrl, '_blank');
+    }
+}
 
 async function fetchVerse() {
     const textEl = document.getElementById('verse-text');
@@ -751,8 +805,10 @@ function resetTasbih() {
     document.getElementById('t-count').innerText = tasbihCount;
 }
 
-getPrayerTimes();
-fetchVerse();
+window.onload = () => {
+    detectCity();
+    fetchVerse();
+};
 </script>
 </body>
-</html>
+        </html>
