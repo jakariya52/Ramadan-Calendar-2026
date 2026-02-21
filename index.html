@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Made By MD Jakariya Hasan - পবিত্র রমজান সময়সূচি ২০২৬</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root { 
+            --primary: #064e3b; 
+            --primary-light: #0d9488;
+            --accent: #d97706;
+            --bg: #f3f4f6;
+            --white: #ffffff;
+            --text-main: #1e293b;
+            --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        body { 
+            font-family: 'Hind Siliguri', sans-serif; 
+            background-color: var(--bg); 
+            background-image: url('https://www.transparenttextures.com/patterns/pinstriped-suit.png');
+            margin: 0; 
+            padding: 10px; 
+            color: var(--text-main); 
+        }
+
+        .container { 
+            max-width: 480px; 
+            margin: auto; 
+            background: var(--white); 
+            border-radius: 35px; 
+            box-shadow: var(--card-shadow); 
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            animation: fadeIn 1s ease-out; 
+        }
+
+        /* Banner Style */
+        .top-banner {
+            background: var(--primary);
+            background-image: linear-gradient(rgba(6, 78, 59, 0.8), rgba(6, 78, 59, 0.9)), url('https://www.transparenttextures.com/patterns/islamic-art.png');
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+        }
+
+        .top-banner h2 { 
+            font-family: 'Noto Serif Bengali', serif;
+            font-size: 16px; 
+            margin: 0; 
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .brand-name { margin: 5px 0; font-weight: 800; }
+        
+        .brand-name a { 
+            color: #fbbf24; 
+            text-decoration: none; 
+            font-family: 'Dancing Script', cursive; 
+            font-size: 38px;
+            display: inline-block;
+            animation: textGlow 2s ease-in-out infinite alternate, floatText 3s ease-in-out infinite;
+        }
+
+        /* New API Section (Amal & Verse) */
+        .amal-section {
+            background: #fff9f0;
+            margin: -25px 20px 20px;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            border: 1px dashed var(--accent);
+            position: relative;
+            z-index: 10;
+            animation: slideUpFade 0.8s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.2s;
+        }
+
+        .amal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .amal-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        #refresh-amal {
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        #refresh-amal:hover { transform: rotate(180deg); }
+
+        .verse-text {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--text-main);
+            font-style: italic;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .verse-ref {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary-light);
+            text-align: right;
+            display: block;
+        }
+
+        /* City Selector */
+        .selector-wrapper { padding: 0 20px; animation: slideUpFade 0.8s ease-out forwards; opacity: 0; animation-delay: 0.4s; }
+        .city-selector {
+            width: 100%; padding: 14px; border-radius: 15px; border: 2px solid #e2e8f0; 
+            font-size: 16px; font-family: inherit; font-weight: 600;
+            background: var(--white); cursor: pointer; outline: none;
+            transition: 0.3s; appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23064e3b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 15px center;
+        }
+
+        /* Hero Timer */
+        .hero { 
+            background: linear-gradient(135deg, var(--primary), var(--primary-light)); 
+            color: white; padding: 25px 20px; border-radius: 25px; text-align: center; 
+            margin: 20px; box-shadow: 0 15px 30px rgba(6, 78, 59, 0.2);
+            animation: slideUpFade 0.8s ease-out forwards; opacity: 0; animation-delay: 0.6s;
+            position: relative;
+        }
+
+        #next-label { font-size: 14px; opacity: 0.9; font-weight: 500; display: block; margin-bottom: 5px; }
+        #top-countdown { font-size: 3.2rem; font-weight: 800; letter-spacing: 2px; }
+        
+        /* Schedule List */
+        .schedule-list { padding: 0 20px 20px; }
+        .prayer-row { 
+            padding: 18px 15px; border-bottom: 1px solid #f1f5f9; 
+            display: flex; justify-content: space-between; align-items: center; 
+            border-radius: 15px; margin-bottom: 8px; background: #fdfdfd;
+            transition: 0.3s;
+            animation: slideUpFade 0.5s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .prayer-row:nth-child(1) { animation-delay: 0.2s; }
+        .prayer-row:nth-child(2) { animation-delay: 0.3s; }
+        .prayer-row:nth-child(3) { animation-delay: 0.4s; }
+        .prayer-row:nth-child(4) { animation-delay: 0.5s; }
+        .prayer-row:nth-child(5) { animation-delay: 0.6s; }
+
+        .prayer-row:hover { background: #f0fdfa; transform: scale(1.02); }
+        
+        .p-info .p-name { font-weight: 700; font-size: 1.1rem; color: var(--primary); display: block; }
+        .status-left { font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 10px; }
+        .upcoming { color: #0d9488; background: #f0fdfa; }
+        .done { color: #94a3b8; background: #f8fafc; }
+        
+        .p-time { font-weight: 800; font-size: 1.2rem; color: var(--text-main); }
+        .status-right { display: block; font-size: 11px; color: #64748b; margin-top: 3px; }
+        
+        .completed { opacity: 0.6; filter: grayscale(0.8); }
+
+        .contact-btn {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            width: calc(100% - 40px); margin: 0 20px 20px; 
+            padding: 16px; 
+            background: linear-gradient(45deg, var(--accent), #f59e0b, var(--accent));
+            background-size: 200% 200%;
+            color: white; text-align: center; border-radius: 18px; text-decoration: none;
+            font-size: 18px; font-weight: 700; 
+            box-shadow: 0 8px 15px rgba(217, 119, 6, 0.4);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            animation: gradientShift 3s ease infinite, pulseGlow 2s infinite;
+        }
+
+        .contact-btn i { animation: ringPhone 2.5s infinite; }
+        .contact-btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 25px rgba(217, 119, 6, 0.6); background-position: 100% 50%; }
+        .contact-btn:active { transform: translateY(1px) scale(0.98); }
+
+        /* --- Animations --- */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUpFade { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes textGlow { from { text-shadow: 0 0 5px rgba(251, 191, 36, 0.5), 0 0 10px rgba(251, 191, 36, 0.5); } to { text-shadow: 0 0 15px #fbbf24, 0 0 25px #f59e0b; } }
+        @keyframes floatText { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+        @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        @keyframes pulseGlow { 0% { box-shadow: 0 0 0 0 rgba(217, 119, 6, 0.6); } 70% { box-shadow: 0 0 0 12px rgba(217, 119, 6, 0); } 100% { box-shadow: 0 0 0 0 rgba(217, 119, 6, 0); } }
+        @keyframes ringPhone { 0%, 20%, 40%, 60%, 80%, 100% { transform: rotate(0deg); } 10%, 30%, 50%, 70%, 90% { transform: rotate(15deg); } }
+
+        .footer { padding: 25px 20px; text-align: center; background: #f8fafc; border-top: 1px solid #e2e8f0; }
+        .footer p { margin: 5px 0; font-size: 13px; color: #64748b; }
+        
+        .loading-overlay { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: white; z-index: 100; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; transition: 0.5s;
+        }
+
+        /* ----- NEW FEATURES CSS ----- */
+        
+        /* 1. Alarm Button */
+        .alarm-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+        .alarm-btn:hover { background: rgba(255, 255, 255, 0.4); }
+        .alarm-btn.active { background: #10b981; border-color: #059669; }
+
+        /* 2. Full Calendar Modal */
+        .calendar-btn {
+            background: var(--primary-light);
+            color: white;
+            width: calc(100% - 40px);
+            margin: 0 20px 15px;
+            padding: 12px;
+            border: none;
+            border-radius: 15px;
+            font-size: 16px;
+            font-family: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(13, 148, 136, 0.2);
+            transition: 0.3s;
+        }
+        .calendar-btn:hover { background: var(--primary); }
+
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6); z-index: 999;
+            display: none; align-items: center; justify-content: center;
+        }
+        .modal-content {
+            background: white; width: 90%; max-width: 450px;
+            max-height: 80vh; border-radius: 20px; padding: 20px;
+            position: relative; overflow-y: auto;
+            animation: slideUpFade 0.4s ease-out;
+        }
+        .close-modal {
+            position: absolute; top: 15px; right: 20px;
+            font-size: 24px; color: #ef4444; cursor: pointer;
+            background: none; border: none; font-weight: bold;
+        }
+        .cal-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 13px; text-align: center; }
+        .cal-table th { background: var(--primary); color: white; padding: 10px 5px; }
+        .cal-table td { border-bottom: 1px solid #e2e8f0; padding: 10px 5px; }
+        .cal-table tr:nth-child(even) { background: #f8fafc; }
+
+        /* 3. Tasbih Counter */
+        .tasbih-container {
+            background: white; margin: 0 20px 20px; padding: 20px;
+            border-radius: 20px; text-align: center;
+            box-shadow: var(--card-shadow); border: 1px solid #e2e8f0;
+        }
+        .tasbih-container h3 { margin: 0 0 15px 0; color: var(--primary); font-size: 16px; }
+        .tasbih-count {
+            font-size: 40px; font-weight: 800; color: var(--accent);
+            background: #fffbeb; display: inline-block; padding: 10px 40px;
+            border-radius: 15px; margin-bottom: 15px; border: 2px solid #fde68a;
+        }
+        .tasbih-controls { display: flex; gap: 10px; justify-content: center; }
+        .btn-tap { background: var(--primary); color: white; border: none; padding: 12px 30px; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; flex-grow: 1; transition: 0.2s; }
+        .btn-tap:active { transform: scale(0.95); background: var(--primary-light); }
+        .btn-reset { background: #ef4444; color: white; border: none; padding: 12px 20px; border-radius: 12px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+        .btn-reset:active { transform: scale(0.95); }
+
+        /* --- New Media Section Style --- */
+        .media-container {
+            background: white; margin: 0 20px 20px; padding: 20px;
+            border-radius: 25px; text-align: center;
+            box-shadow: var(--card-shadow); border: 1px solid #e2e8f0;
+        }
+        .media-container h3 { 
+            margin: 0 0 15px 0; color: var(--text-main); font-size: 16px; font-weight: 700;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .video-wrapper {
+            position: relative; padding-bottom: 56.25%; height: 0;
+            overflow: hidden; border-radius: 15px; background: #000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .video-wrapper iframe {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
+        }
+        .media-desc { font-size: 13px; color: #64748b; margin-top: 12px; font-weight: 500; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div id="main-loader" class="loading-overlay">
+        <i class="fas fa-moon fa-spin" style="font-size: 40px; color: var(--primary);"></i>
+        <p style="margin-top: 15px; font-weight: 700; color: var(--primary);">সময়সূচি সাজানো হচ্ছে...</p>
+    </div>
+
+    <div class="top-banner">
+        <h2>পবিত্র রমজান মাসের সময়সূচি</h2>
+        <div class="brand-name">
+            <a href="https://jakariya41jr.pro.bd/" target="_blank">Md Jakariya Hasan</a>
+        </div>
+        <p id="today-date" style="font-size:14px; opacity:0.9; margin-top:5px;">তারিখ লোড হচ্ছে...</p>
+    </div>
+
+    <div class="amal-section">
+        <div class="amal-header">
+            <span class="amal-title"><i class="fas fa-kaaba"></i> আজকের আমল ও নসিহত</span>
+            <button id="refresh-amal" onclick="fetchVerse()" title="নতুন আমল দেখুন"><i class="fas fa-sync-alt"></i></button>
+        </div>
+        <div id="amal-content">
+            <span class="verse-text" id="verse-text">"রমজান হলো সবরের মাস, আর সবরের প্রতিদান হলো জান্নাত।"</span>
+            <span class="verse-ref" id="verse-ref">— আল হাদিস</span>
+        </div>
+    </div>
+
+    <div class="selector-wrapper">
+        <select class="city-selector" id="citySelect" onchange="getPrayerTimes()">
+            <option value='Dhaka' selected>📍 ঢাকা</option>
+            <option value='Faridpur'>📍 ফরিদপুর</option>
+            <option value='Gazipur'>📍 গাজীপুর</option>
+            <option value='Gopalganj'>📍 গোপালগঞ্জ</option>
+            <option value='Kishoreganj'>📍 কিশোরগঞ্জ</option>
+            <option value='Madaripur'>📍 মাদারীপুর</option>
+            <option value='Manikganj'>📍 মানিকগঞ্জ</option>
+            <option value='Munshiganj'>📍 মুন্সীগঞ্জ</option>
+            <option value='Narayanganj'>📍 নারায়ণগঞ্জ</option>
+            <option value='Narsingdi'>📍 নরসিংদী</option>
+            <option value='Rajbari'>📍 রাজবাড়ী</option>
+            <option value='Shariatpur'>📍 শরীয়তপুর</option>
+            <option value='Tangail'>📍 টাঙ্গাইল</option>
+            <option value='Bogra'>📍 বগুড়া</option>
+            <option value='Joypurhat'>📍 জয়পুরহাট</option>
+            <option value='Naogaon'>📍 নওগাঁ</option>
+            <option value='Natore'>📍 নাটোর</option>
+            <option value='Nawabganj'>📍 নবাবগঞ্জ</option>
+            <option value='Pabna'>📍 পাবনা</option>
+            <option value='Rajshahi'>📍 রাজশাহী</option>
+            <option value='Sirajganj'>📍 সিরাজগঞ্জ</option>
+            <option value='Dinajpur'>📍 দিনাজপুর</option>
+            <option value='Gaibandha'>📍 গাইবান্ধা</option>
+            <option value='Kurigram'>📍 কুড়িগ্রাম</option>
+            <option value='Lalmonirhat'>📍 লালমনিরহাট</option>
+            <option value='Nilphamari'>📍 নীলফামারী</option>
+            <option value='Panchagarh'>📍 পঞ্চগড়</option>
+            <option value='Rangpur'>📍 রংপুর</option>
+            <option value='Thakurgaon'>📍 ঠাকুরগাঁও</option>
+            <option value='Barguna'>📍 বরগুনা</option>
+            <option value='Barisal'>📍 বরিশাল</option>
+            <option value='Bhola'>📍 ভোলা</option>
+            <option value='Jhalokati'>📍 ঝালকাঠি</option>
+            <option value='Patuakhali'>📍 পটুয়াখালী</option>
+            <option value='Pirojpur'>📍 পিরোজপুর</option>
+            <option value='Bandarban'>📍 বান্দরবান</option>
+            <option value='Brahmanbaria'>📍 ব্রাহ্মণবাড়িয়া</option>
+            <option value='Chandpur'>📍 চাঁদপুর</option>
+            <option value='Chittagong'>📍 চট্টগ্রাম</option>
+            <option value='Comilla'>📍 কুমিল্লা</option>
+            <option value='Coxs Bazar'>📍 কক্সবাজার</option>
+            <option value='Feni'>📍 ফেনী</option>
+            <option value='Khagrachhari'>📍 খাগড়াছড়ি</option>
+            <option value='Lakshmipur'>📍 লক্ষ্মীপুর</option>
+            <option value='Noakhali'>📍 নোয়াখালী</option>
+            <option value='Rangamati'>📍 রাঙ্গামাটি</option>
+            <option value='Habiganj'>📍 হবিগঞ্জ</option>
+            <option value='Moulvibazar'>📍 মৌলভীবাজার</option>
+            <option value='Sunamganj'>📍 সুনামগঞ্জ</option>
+            <option value='Sylhet'>📍 সিলেট</option>
+            <option value='Bagerhat'>📍 বাগেরহাট</option>
+            <option value='Chuadanga'>📍 চুয়াডাঙ্গা</option>
+            <option value='Jessore'>📍 যশোর</option>
+            <option value='Jhenaidah'>📍 ঝিনাইদহ</option>
+            <option value='Khulna'>📍 খুলনা</option>
+            <option value='Kushtia'>📍 কুষ্টিয়া</option>
+            <option value='Magura'>📍 মাগুরা</option>
+            <option value='Meherpur'>📍 মেহেরপুর</option>
+            <option value='Narail'>📍 নড়াইল</option>
+            <option value='Satkhira'>📍 সাতক্ষীরা</option>
+            <option value='Jamalpur'>📍 জামালপুর</option>
+            <option value='Mymensingh'>📍 ময়মনসিংহ</option>
+            <option value='Netrokona'>📍 নেত্রকোনা</option>
+            <option value='Sherpur'>📍 শেরপুর</option>
+        </select>
+    </div>
+
+    <div class="hero">
+        <span id="next-label">পরবর্তী ইবাদত</span>
+        <span id="top-countdown">00:00:00</span>
+        <button id="alarmBtn" class="alarm-btn" onclick="toggleAlarm()">
+            <i class="fas fa-bell-slash"></i> অ্যালার্ম বন্ধ আছে
+        </button>
+    </div>
+
+    <div id="list" class="schedule-list"></div>
+
+    <button class="calendar-btn" onclick="openCalendar()">
+        <i class="far fa-calendar-alt"></i> পুরো রমজানের সময়সূচি দেখুন
+    </button>
+
+    <div class="media-container">
+        <h3><i class="fab fa-youtube" style="color: #ef4444;"></i> ২৪ ঘণ্টা মিডিয়া</h3>
+        <div class="video-wrapper">
+            <iframe 
+                src="https://www.youtube-nocookie.com/embed/videoseries?list=PLf3Jo-llAO7S-3T9b9Y5T-RBAYppdv9K8" 
+                title="Ramadan Special Playlist" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+        <p class="media-desc">মন জুড়ানো ইসলামিক গজল ও পবিত্র কোরআন তেলাওয়াত শুনুন</p>
+    </div>
+
+    <div class="tasbih-container">
+        <h3><i class="fas fa-fingerprint"></i> ডিজিটাল তসবিহ</h3>
+        <div class="tasbih-count" id="t-count">0</div>
+        <div class="tasbih-controls">
+            <button class="btn-tap" onclick="tapTasbih()">সুবহানাল্লাহ</button>
+            <button class="btn-reset" onclick="resetTasbih()"><i class="fas fa-redo"></i></button>
+        </div>
+    </div>
+
+    <a href="https://jakariya41jr.github.io/my-profile/" target="_blank" class="contact-btn">
+        <i class="fas fa-phone-alt"></i> যোগাযোগ করুন
+    </a>
+
+    <div class="footer">
+        <p><b>দোয়া:</b> আল্লাহুম্মা লাকা সুমতু ওয়া আলা রিযক্বিকা আফতারতু।</p>
+        <p>&copy; ২০২৬ | @Jakariya41Jr - দ্বীনের পথে আপনার সাথী</p>
+    </div>
+</div>
+
+<div id="calendarModal" class="modal-overlay">
+    <div class="modal-content">
+        <button class="close-modal" onclick="closeCalendar()">&times;</button>
+        <h3 style="color: var(--primary); margin-top:0; text-align:center;">রমজান ২০২৬ (১৪৪৭ হিজরি)</h3>
+        <div id="calendar-loader" style="text-align:center; padding: 20px;"><i class="fas fa-spinner fa-spin"></i> লোড হচ্ছে...</div>
+        <table class="cal-table" id="cal-table" style="display:none;">
+            <thead>
+                <tr>
+                    <th>রমজান</th>
+                    <th>ইংরেজি</th>
+                    <th>সেহরি</th>
+                    <th>ইফতার</th>
+                </tr>
+            </thead>
+            <tbody id="cal-body"></tbody>
+        </table>
+    </div>
+</div>
+
+<audio id="alarmAudio" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" preload="auto"></audio>
+
+<script>
+// ... (আপনার আগের সব জাভাস্ক্রিপ্ট লজিক এখানে থাকবে, কোনো পরিবর্তন নেই)
+let updateInterval;
+let tomorrowSehri = null; 
+let alarmEnabled = false;
+let notifiedEvents = {}; 
+
+const fallbackHadiths = [
+    { text: "রোজা ঢাল স্বরূপ, যতক্ষণ না তা মিথ্যা বা গীবত দ্বারা ফেড়ে ফেলা হয়।", ref: "নাসায়ী" },
+    { text: "যে ব্যক্তি ঈমান ও সাওয়াবের আশায় রমজানের রোজা রাখে, তার পূর্বের সব গুনাহ মাফ করে দেওয়া হয়।", ref: "বুখারী" },
+    { text: "রোজাদারের মুখের দুর্গন্ধ আল্লাহর কাছে মেশকের সুগন্ধির চেয়েও উত্তম।", ref: "মুসলিম" },
+    { text: "রোজা এবং কোরআন কিয়ামতের দিন বান্দার জন্য সুপারিশ করবে।", ref: "আহমাদ" },
+    { text: "রমজান মাসে ওমরাহ করা আমার সাথে হজ করার সমতুল্য।", ref: "বুখারী" }
+];
+
+async function fetchVerse() {
+    const textEl = document.getElementById('verse-text');
+    const refEl = document.getElementById('verse-ref');
+    const icon = document.querySelector('#refresh-amal i');
+    
+    icon.classList.add('fa-spin');
+    textEl.style.opacity = '0.5';
+
+    try {
+        const randomAyah = Math.floor(Math.random() * 6236) + 1;
+        const response = await fetch(`https://api.alquran.cloud/v1/ayah/${randomAyah}/bn.bengali`);
+        if (!response.ok) throw new Error("API Error");
+        const data = await response.json();
+        
+        if (data.status === "OK") {
+            textEl.innerText = `"${data.data.text}"`;
+            refEl.innerText = `— সূরা ${data.data.surah.name} (আয়াত: ${data.data.numberInSurah})`;
+        }
+    } catch (error) {
+        const randomFallback = fallbackHadiths[Math.floor(Math.random() * fallbackHadiths.length)];
+        textEl.innerText = `"${randomFallback.text}"`;
+        refEl.innerText = `— ${randomFallback.ref}`;
+    } finally {
+        textEl.style.opacity = '1';
+        icon.classList.remove('fa-spin');
+    }
+}
+
+const monthNamesBn = {
+    'January': 'জানুয়ারি', 'February': 'ফেব্রুয়ারি', 'March': 'মার্চ', 'April': 'এপ্রিল', 
+    'May': 'মে', 'June': 'জুন', 'July': 'জুলাই', 'August': 'আগস্ট', 
+    'September': 'সেপ্টেম্বর', 'October': 'অক্টোবর', 'November': 'নভেম্বর', 'December': 'ডিসেম্বর'
+};
+
+async function getPrayerTimes() {
+    const city = document.querySelector('#citySelect').value;
+    const listContainer = document.querySelector('#list');
+    
+    try {
+        const resToday = await fetch(`https://api.aladhan.com/v1/timingsByCity?city=${city}&country=Bangladesh&method=1`);
+        const dataToday = await resToday.json();
+        const timings = dataToday.data.timings;
+        
+        let enMonth = dataToday.data.date.gregorian.month.en;
+        let bnMonth = monthNamesBn[enMonth] || enMonth;
+
+        document.getElementById('today-date').innerText = `হিজরি: ${dataToday.data.date.hijri.day} ${dataToday.data.date.hijri.month.en}, ${dataToday.data.date.readable.replace(enMonth, bnMonth)}`;
+
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const dd = String(tomorrow.getDate()).padStart(2, '0');
+        const mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+        const yyyy = tomorrow.getFullYear();
+        const dateStr = `${dd}-${mm}-${yyyy}`;
+
+        const resTmw = await fetch(`https://api.aladhan.com/v1/timingsByCity/${dateStr}?city=${city}&country=Bangladesh&method=1`);
+        const dataTmw = await resTmw.json();
+        tomorrowSehri = dataTmw.data.timings.Fajr;
+
+        const schedule = [
+            { name: "সেহরি শেষ (ফজর)", time: timings.Fajr },
+            { name: "যোহর", time: timings.Dhuhr },
+            { name: "আসর", time: timings.Asr },
+            { name: "ইফতার (মাগরিব)", time: timings.Maghrib },
+            { name: "এশা ও তারাবি", time: timings.Isha }
+        ];
+
+        renderSchedule(schedule);
+        document.getElementById('main-loader').style.display = 'none';
+        notifiedEvents = {}; 
+    } catch (error) {
+        listContainer.innerHTML = '<p style="color:red; text-align:center; padding:20px;">ইন্টারনেট সংযোগ বিচ্ছিন্ন!</p>';
+        document.getElementById('main-loader').style.display = 'none';
+    }
+}
+
+function renderSchedule(schedule) {
+    const listContainer = document.querySelector('#list');
+    listContainer.innerHTML = '';
+
+    schedule.forEach(item => {
+        const row = document.createElement('div');
+        row.className = 'prayer-row';
+        row.setAttribute('data-time', item.time);
+        row.setAttribute('data-name', item.name);
+        
+        row.innerHTML = `
+            <div class="p-info">
+                <span class="p-name">${item.name}</span>
+                <span class="status-left upcoming">আসন্ন</span>
+            </div>
+            <div class="p-time-box" style="text-align:right">
+                <span class="p-time">${formatAMPM(item.time)}</span>
+                <span class="status-right">হিসাব করা হচ্ছে...</span>
+            </div>
+        `;
+        listContainer.appendChild(row);
+    });
+
+    if(updateInterval) clearInterval(updateInterval);
+    updateInterval = setInterval(updateSystem, 1000);
+    updateSystem();
+}
+
+function formatAMPM(time) {
+    let [h, m] = time.split(':');
+    let ampm = h >= 12 ? 'PM' : 'AM';
+    h = h % 12 || 12;
+    return `${h}:${m} ${ampm}`;
+}
+
+function toggleAlarm() {
+    const btn = document.getElementById('alarmBtn');
+    alarmEnabled = !alarmEnabled;
+    if(alarmEnabled) {
+        btn.classList.add('active');
+        btn.innerHTML = '<i class="fas fa-bell"></i> অ্যালার্ম চালু আছে';
+        if ("Notification" in window && Notification.permission !== "granted") {
+            Notification.requestPermission();
+        }
+    } else {
+        btn.classList.remove('active');
+        btn.innerHTML = '<i class="fas fa-bell-slash"></i> অ্যালার্ম বন্ধ আছে';
+    }
+}
+
+function triggerAlarm(title, body) {
+    if(!alarmEnabled) return;
+    const audio = document.getElementById('alarmAudio');
+    audio.play().catch(e => console.log("Audio play prevented"));
+
+    if ("Notification" in window && Notification.permission === "granted") {
+        new Notification(title, { body: body, icon: "https://cdn-icons-png.flaticon.com/512/1152/1152945.png" });
+    } else {
+        alert(`${title}\n${body}`);
+    }
+}
+
+function updateSystem() {
+    const now = new Date();
+    const rows = document.querySelectorAll('.prayer-row');
+    let nextPrayer = null;
+
+    rows.forEach(row => {
+        const [h, m] = row.getAttribute('data-time').split(':');
+        const pName = row.getAttribute('data-name');
+        const pTime = new Date(); 
+        pTime.setHours(h, m, 0, 0);
+        
+        const statusLeft = row.querySelector('.status-left');
+        const statusRight = row.querySelector('.status-right');
+
+        if (now > pTime) {
+            row.classList.add('completed');
+            statusLeft.innerText = "সম্পন্ন";
+            statusLeft.className = "status-left done";
+            statusRight.innerText = "সময় শেষ";
+        } else {
+            row.classList.remove('completed');
+            statusLeft.innerText = "আসন্ন";
+            statusLeft.className = "status-left upcoming";
+            
+            let diff = pTime - now;
+            let hh = Math.floor(diff / 3600000);
+            let mm = Math.floor((diff % 3600000) / 60000);
+            statusRight.innerText = (hh > 0 ? hh + "ঘণ্টা " : "") + mm + " মি. বাকি";
+            
+            if (!nextPrayer) nextPrayer = { name: pName, time: pTime };
+
+            if (alarmEnabled && (pName === "সেহরি শেষ (ফজর)" || pName === "ইফতার (মাগরিব)")) {
+                let diffInMinutes = Math.floor(diff / 60000);
+                if (diffInMinutes === 15 && !notifiedEvents[pName]) {
+                    triggerAlarm('সতর্কতা!', `${pName} এর আর মাত্র ১৫ মিনিট বাকি।`);
+                    notifiedEvents[pName] = true;
+                }
+            }
+        }
+    });
+
+    const countdownEl = document.getElementById('top-countdown');
+    const labelEl = document.getElementById('next-label');
+
+    if (!nextPrayer && tomorrowSehri) {
+        const [th, tm] = tomorrowSehri.split(':');
+        const tmwTime = new Date();
+        tmwTime.setDate(tmwTime.getDate() + 1);
+        tmwTime.setHours(th, tm, 0, 0);
+
+        labelEl.innerText = "আগামীকাল সেহরি শেষ হতে বাকি";
+        let diff = tmwTime - now;
+        let hh = Math.floor(diff / 3600000);
+        let mm = Math.floor((diff % 3600000) / 60000);
+        let ss = Math.floor((diff % 60000) / 1000);
+        countdownEl.innerText = `${hh.toString().padStart(2,'0')}:${mm.toString().padStart(2,'0')}:${ss.toString().padStart(2,'0')}`;
+    } else if (nextPrayer) {
+        labelEl.innerText = nextPrayer.name + " শুরু হতে বাকি";
+        let diff = nextPrayer.time - now;
+        let hh = Math.floor(diff / 3600000);
+        let mm = Math.floor((diff % 3600000) / 60000);
+        let ss = Math.floor((diff % 60000) / 1000);
+        countdownEl.innerText = `${hh.toString().padStart(2,'0')}:${mm.toString().padStart(2,'0')}:${ss.toString().padStart(2,'0')}`;
+    }
+}
+
+async function openCalendar() {
+    document.getElementById('calendarModal').style.display = 'flex';
+    const city = document.querySelector('#citySelect').value;
+    const loader = document.getElementById('calendar-loader');
+    const table = document.getElementById('cal-table');
+    const tbody = document.getElementById('cal-body');
+    
+    tbody.innerHTML = '';
+    loader.style.display = 'block';
+    table.style.display = 'none';
+
+    try {
+        const res = await fetch(`https://api.aladhan.com/v1/hijriCalendarByCity/1447/9?city=${city}&country=Bangladesh&method=1`);
+        const data = await res.json();
+        
+        if(data.code === 200) {
+            data.data.forEach(day => {
+                const tr = document.createElement('tr');
+                let enMonth = day.date.gregorian.month.en;
+                let bnMonth = monthNamesBn[enMonth] || enMonth;
+                let dateStr = `${day.date.gregorian.day} ${bnMonth}`;
+                
+                tr.innerHTML = `
+                    <td>${day.date.hijri.day}</td>
+                    <td>${dateStr}</td>
+                    <td style="font-weight:bold; color:var(--primary);">${formatAMPM(day.timings.Fajr.split(" ")[0])}</td>
+                    <td style="font-weight:bold; color:var(--accent);">${formatAMPM(day.timings.Maghrib.split(" ")[0])}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+            loader.style.display = 'none';
+            table.style.display = 'table';
+        }
+    } catch (e) {
+        loader.innerHTML = '<span style="color:red;">ডেটা লোড করতে সমস্যা হয়েছে!</span>';
+    }
+}
+
+function closeCalendar() {
+    document.getElementById('calendarModal').style.display = 'none';
+}
+
+let tasbihCount = 0;
+function tapTasbih() {
+    tasbihCount++;
+    document.getElementById('t-count').innerText = tasbihCount;
+    if (navigator.vibrate) navigator.vibrate(50);
+}
+function resetTasbih() {
+    tasbihCount = 0;
+    document.getElementById('t-count').innerText = tasbihCount;
+}
+
+getPrayerTimes();
+fetchVerse();
+</script>
+</body>
+</html>
